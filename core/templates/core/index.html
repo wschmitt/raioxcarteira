@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block topmenu %}
+    <a href="{% url 'home' %}">Go Home</a>
+    <a href="{% url 'about' %}">About This Site</a>
+    <br><br>
+    {% if request.user.is_authenticated %}
+        <p>Hello {{ request.user.username }}
+         (<a href="/accounts/logout/">Logout</a>)
+        </p>
+    {% else %}
+        <a href="{% url 'auth:login' %}" >Login</a>
+    {% endif %}
+{% endblock topmenu %}

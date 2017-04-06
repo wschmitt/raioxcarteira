@@ -1,4 +1,1 @@
 
-
-def home(request):
-	return ""

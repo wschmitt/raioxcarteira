@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block topmenu %}
+    <a href="{% url 'home' %}">Go Home</a>
+    <a href="{% url 'about' %}">About This Site</a>
+    <br><br>
+    {% if request.user.is_authenticated %}
+        <p>Hello {{ request.user.username }}
+         (<a href="/accounts/logout/">Logout</a>)
+        </p>
+    {% else %}
+        <a href="{% url 'login' %}" >Login</a>
+    {% endif %}
+{% endblock topmenu %}
+
+<!--
+{% load static %}
+<html>
+<head>
+    <title>{% if request.user.is_authenticated %}Logged In{% else %}Not Logged In{% endif %}</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body class="{% if request.user.is_authenticated %}logged-in{% else %}logged-out{% endif %}">
+    {% if request.user.is_authenticated %}
+    <a href="/accounts/logout/" class="pull-right">Logout</a>
+    {% if request.user.first_name or request.user.last_name %}
+        {{ request.user.first_name }} {{ request.user.last_name }}
+    {% else %}
+        {{ request.user.username }}
+    {% endif %}
+    {% if request.user.profile.account_verified %} (verified) {% else %} (unverified) {% endif %}
+ 
+{% else %}
+    <a href="/admin" class="pull-right">Login</a>
+{% endif %}
+</body>
+</html>
+-->
