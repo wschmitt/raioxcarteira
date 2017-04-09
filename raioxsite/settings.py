@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # The Django sites framework is required
     'django.contrib.sites',
+    'bootstrap3',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
