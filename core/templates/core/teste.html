@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{# Don't forget that one ! #}
+{% load static %}
+
+{% block content %}
+<div>
+    <form action="" method="post">
+        {% csrf_token %}
+        
+        {% for form in formset.forms %}
+        {{ form.as_p}}
+        {% endfor %}
+        <input type="submit" />
+    </form>
+</div>
+{% endblock %}
+
+{% block footer %}
+<!--<script type="text/javascript" src="{% static 'admin/js/vendor/jquery/jquery.js' %}"></script>-->
+{{ form.media }}
+
+{% endblock %}

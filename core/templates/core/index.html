@@ -3,24 +3,31 @@
 
 {% block scripts %}
     {% load static %}
-    <script src="{% static 'js/parse.js' %}"></script>
     <script src="{% static 'js/jquery.formset.js' %}"></script>
+
+    <!--<script type="text/javascript" src="{% static '/admin/js/admin/RelatedObjectLookups.js' %}"></script>-->
+    <script src="{% static 'js/parse.js' %}"></script>
     <script type="text/javascript">
     $(function() {
+        // //console.log($('#myForm tbody tr'))
         $('#myForm tbody tr').formset({ 
-            addText:'Adicionar Entrada', 
+            addText:'Adicionar Nova Despesa', 
             deleteText:'Remover', 
             addCssClass:'btn btn-default',
             deleteCssClass:'btn btn-danger'
         });
     })
-</script>
+    </script>
 {% endblock scripts %}
 
+{% block pageheader %}Receitas/Despesas{% endblock pageheader %}
+
 {% block topmenu %}
+    <!--
     <a href="{% url 'home' %}">Go Home</a>
     <a href="{% url 'about' %}">About This Site</a>
     <br><br>
+    -->
     {% if request.user.is_authenticated %}
         <p>Hello {{ request.user.username }}
          (<a href="/accounts/logout/">Logout</a>)
@@ -35,7 +42,6 @@
             
             
             <table class="table table-hover">
-            <!--
                 <thead>
                     <tr>
                         <th>Data</th>
@@ -44,25 +50,33 @@
                         <th>Valor</th>
                         <th>Operação</th>
                     </tr>
+                    <tr>
+                        <th colspan="4">Despesas Anteriores</th>
+                    </tr>
                     </thead>
-                    -->
                 <tbody>
                     {% for form in formset.forms %}
                     <tr>
-                       <td>{% bootstrap_field form.date %}</td>
-                       <td>{% bootstrap_field form.category %}</td>
-                       <td>{% bootstrap_field form.description %}</td>
-                       <td>{% bootstrap_field form.value %}</td>
+                       <td>{% bootstrap_field form.date show_label=False size='small' %}</td>
+                       <td>{% bootstrap_field form.category show_label=False size='small' %}</td>
+                       <td>{% bootstrap_field form.description show_label=False size='small' %}</td>
+                       <td>{% bootstrap_field form.value show_label=False size='small' %}</td>
                     </tr>
                     {% endfor %}
+                    <tr id="new-entries-header" style="visibility: hidden">
+                        <td colspan="5"><b>Despesas novas</b></td>
+                    </tr>
                 </tbody>
             </table>
-            {{ formset.management_form }}
             
+            {{ formset.management_form }}
+
+            {{ form.media }}
             <input type="submit" value="Submit" />
         </form>
         <div id="estatement_container"></div>
     {% else %}
         <a href="{% url 'auth:login' %}" >Login</a>
     {% endif %}
+    
 {% endblock topmenu %}

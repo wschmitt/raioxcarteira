@@ -40,7 +40,10 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'dal',
+    'dal_select2',
     'django.contrib.admin',
+    'django.contrib.admin.options',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -49,6 +52,7 @@ INSTALLED_APPS = [
     # The Django sites framework is required
     'django.contrib.sites',
     'bootstrap3',
+    'floppyforms',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -171,6 +175,7 @@ USE_L10N = True
 
 USE_TZ = True
 
+#print ADMIN_MEDIA_PREFIX
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
