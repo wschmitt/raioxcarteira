@@ -46,9 +46,9 @@
 <div class="side-menu-container">
     <ul class="nav navbar-nav">
 
-        <li><a href="#"><span class="glyphicon glyphicon-send"></span> Link</a></li>
-        <li class="active"><a href="#"><span class="glyphicon glyphicon-plane"></span> Active Link</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-cloud"></span> Link</a></li>
+        <li><a href="{% url 'home' %}"><span class="glyphicon glyphicon-home"></span> Início</a></li>
+        <li><a href="{% url 'despesas' %}"><span class="glyphicon glyphicon-edit"></span> Despesas</a></li> <!--class="active"-->
+        <li><a href="#"><span class="glyphicon glyphicon-signal"></span> Análises</a></li>
 
         <!-- Dropdown-->
         <li class="panel panel-default" id="dropdown">

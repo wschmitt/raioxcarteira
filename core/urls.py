@@ -7,6 +7,7 @@ from .models import CategoryExpense, CategoryExpenseForm
 
 urlpatterns = [
 	url(r'^$', views.home, name='home'),
+	url(r'^despesas/$', views.despesas, name='despesas'),
 	url(r'^teste/$', views.UpdateView.as_view(), name='teste'),
 	url(r'^about/$', views.about, name='about'),
 	url(r'^test-autocomplete/$', views.UpdateCategoryView.as_view(create_field='name', model=CategoryExpense), name='select2_fk'),
